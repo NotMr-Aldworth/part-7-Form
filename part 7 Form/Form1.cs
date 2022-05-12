@@ -156,6 +156,9 @@ namespace part_7_Form
             HeroUpdate();
         }
 
+
+
+
         private void heroesToLower_Click(object sender, EventArgs e)
         {
             heroes = heroes.ConvertAll(low => low.ToLowerInvariant());
