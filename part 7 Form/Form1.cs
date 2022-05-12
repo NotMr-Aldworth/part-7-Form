@@ -16,6 +16,7 @@ namespace part_7_Form
         List<int> numbers = new List<int>();
         List<string> heroes = new List<string>();
         Random generator = new Random();
+        int removedNmbrs = 0;
 
 
         public Lists()
@@ -47,16 +48,14 @@ namespace part_7_Form
         private void btnSortNumbers_Click(object sender, EventArgs e)
         {
             numbers.Sort();
-            lstNumbers.DataSource = null;
-            lstNumbers.DataSource = numbers;
+            NumberUpdate();
             lblStatus.Text = ("Status: Numbers sorted");
         }
 
         private void btnSortHeroes_Click(object sender, EventArgs e)
         {
             heroes.Sort();
-            lstHeroes.DataSource = null;
-            lstHeroes.DataSource = heroes;
+            HeroUpdate();
             lblStatus.Text = ("Status: Heroes sorted");
         }
 
@@ -65,10 +64,9 @@ namespace part_7_Form
             numbers.Clear();
             for (int i = 0; i < 20; i++)
                 numbers.Add(generator.Next(100));
-            lstNumbers.DataSource = null;
-            lstNumbers.DataSource = numbers;
+            NumberUpdate();
             lblStatus.Text = ("Status: New numbers list");
-            btnRemoveNumber.Enabled = true;
+
         }
 
         private void btnNewHeroes_Click(object sender, EventArgs e)
@@ -76,27 +74,94 @@ namespace part_7_Form
             heroes.Clear();
             heroes.Add("Superman");
             heroes.Add("Batman");
-            lstHeroes.DataSource = null;
-            lstHeroes.DataSource = heroes;
+            HeroUpdate();
             lblStatus.Text = ("Status: New heroes list");
 
         }
 
         private void btnRemoveNumber_Click(object sender, EventArgs e)
         {
-            numbers.RemoveAt((Int32)lstNumbers.SelectedIndex);
+            if (lstNumbers.SelectedIndex < 0)
+                lblStatus.Text = ("Status: No item selected");
+            else
+            {
+                numbers.RemoveAt((Int32)lstNumbers.SelectedIndex);
+                NumberUpdate();
+                lblStatus.Text = ("Status: Number removed");
+            }
 
-            lstNumbers.DataSource = null;
-            lstNumbers.DataSource = numbers;
-            lblStatus.Text = ("Status: Number removed");
-            if (lstNumbers.SelectedItem == null)
-                btnRemoveNumber.Enabled = false;
-            
+
+
+
         }
 
         private void btnRemoveHero_Click(object sender, EventArgs e)
         {
 
+
+            if (heroes.Remove(txtRemoveHero.Text))
+            {
+                HeroUpdate();
+                lblStatus.Text = ("Status: Hero(es) removed");
+            }
+            else
+                lblStatus.Text = ("Hero name not found");
+        }
+
+        private void btnRemoveAllNumbers_Click(object sender, EventArgs e)
+        {
+
+            if (lstNumbers.SelectedIndex < 0)
+                lblStatus.Text = ("Status: No index selected");
+            else
+            while (numbers.Remove((Int32)lstNumbers.SelectedItem))
+                {
+                    removedNmbrs = removedNmbrs + 1;
+                    lblStatus.Text = ($"Status: {removedNmbrs} number(s) have been removed");
+                }
+
+            removedNmbrs = 0;
+            NumberUpdate();
+        }
+        private void NumberUpdate()
+        {
+            lstNumbers.DataSource = null;
+            lstNumbers.DataSource = numbers;
+        }
+        private void HeroUpdate()
+        {
+            lstHeroes.DataSource = null;
+            lstHeroes.DataSource = heroes;
+        }
+
+        private void btnAddHeroes_Click(object sender, EventArgs e)
+        {
+            heroes.Add(txtAddHeroes.Text);
+            HeroUpdate();
+            lblStatus.Text = ("Status: Hero added");
+        }
+
+        private void btnDec_Click(object sender, EventArgs e)
+        {
+            numbers.Sort();
+            numbers.Reverse();
+            NumberUpdate();
+            lblStatus.Text = ("Status: Decsending numbers sorted");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            heroes = heroes.ConvertAll(low => low.ToUpperInvariant());
+            lblStatus.Text = ("Status: Heroes to upper");
+            HeroUpdate();
+        }
+
+        private void heroesToLower_Click(object sender, EventArgs e)
+        {
+            heroes = heroes.ConvertAll(low => low.ToLowerInvariant());
+            lblStatus.Text = ("Status: Heroes to lower");
+            HeroUpdate();
         }
     }
+
 }

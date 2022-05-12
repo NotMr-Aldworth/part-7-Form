@@ -46,13 +46,16 @@
             this.txtRemoveHero = new System.Windows.Forms.TextBox();
             this.btnRemoveHero = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.btnDec = new System.Windows.Forms.Button();
+            this.heroesToUpper = new System.Windows.Forms.Button();
+            this.heroesToLower = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblNmbr
             // 
             this.lblNmbr.AutoSize = true;
             this.lblNmbr.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNmbr.Location = new System.Drawing.Point(84, 53);
+            this.lblNmbr.Location = new System.Drawing.Point(149, 9);
             this.lblNmbr.Name = "lblNmbr";
             this.lblNmbr.Size = new System.Drawing.Size(85, 22);
             this.lblNmbr.TabIndex = 0;
@@ -62,7 +65,7 @@
             // 
             this.lblHeroes.AutoSize = true;
             this.lblHeroes.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeroes.Location = new System.Drawing.Point(421, 51);
+            this.lblHeroes.Location = new System.Drawing.Point(488, 9);
             this.lblHeroes.Name = "lblHeroes";
             this.lblHeroes.Size = new System.Drawing.Size(67, 22);
             this.lblHeroes.TabIndex = 1;
@@ -71,7 +74,7 @@
             // btnNewNumbers
             // 
             this.btnNewNumbers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewNumbers.Location = new System.Drawing.Point(93, 87);
+            this.btnNewNumbers.Location = new System.Drawing.Point(142, 35);
             this.btnNewNumbers.Name = "btnNewNumbers";
             this.btnNewNumbers.Size = new System.Drawing.Size(92, 31);
             this.btnNewNumbers.TabIndex = 2;
@@ -82,18 +85,18 @@
             // btnSortNumbers
             // 
             this.btnSortNumbers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortNumbers.Location = new System.Drawing.Point(188, 87);
+            this.btnSortNumbers.Location = new System.Drawing.Point(93, 72);
             this.btnSortNumbers.Name = "btnSortNumbers";
-            this.btnSortNumbers.Size = new System.Drawing.Size(92, 30);
+            this.btnSortNumbers.Size = new System.Drawing.Size(92, 43);
             this.btnSortNumbers.TabIndex = 3;
-            this.btnSortNumbers.Text = "Sort";
+            this.btnSortNumbers.Text = "Ascending Sort";
             this.btnSortNumbers.UseVisualStyleBackColor = true;
             this.btnSortNumbers.Click += new System.EventHandler(this.btnSortNumbers_Click);
             // 
             // btnNewHeroes
             // 
             this.btnNewHeroes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewHeroes.Location = new System.Drawing.Point(425, 85);
+            this.btnNewHeroes.Location = new System.Drawing.Point(425, 45);
             this.btnNewHeroes.Name = "btnNewHeroes";
             this.btnNewHeroes.Size = new System.Drawing.Size(92, 31);
             this.btnNewHeroes.TabIndex = 4;
@@ -104,7 +107,7 @@
             // btnSortHeroes
             // 
             this.btnSortHeroes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortHeroes.Location = new System.Drawing.Point(523, 85);
+            this.btnSortHeroes.Location = new System.Drawing.Point(523, 45);
             this.btnSortHeroes.Name = "btnSortHeroes";
             this.btnSortHeroes.Size = new System.Drawing.Size(92, 31);
             this.btnSortHeroes.TabIndex = 5;
@@ -170,6 +173,7 @@
             this.btnRemoveAllNumbers.TabIndex = 11;
             this.btnRemoveAllNumbers.Text = "Remove All";
             this.btnRemoveAllNumbers.UseVisualStyleBackColor = true;
+            this.btnRemoveAllNumbers.Click += new System.EventHandler(this.btnRemoveAllNumbers_Click);
             // 
             // txtAddHeroes
             // 
@@ -186,6 +190,7 @@
             this.btnAddHeroes.TabIndex = 13;
             this.btnAddHeroes.Text = "Add";
             this.btnAddHeroes.UseVisualStyleBackColor = true;
+            this.btnAddHeroes.Click += new System.EventHandler(this.btnAddHeroes_Click);
             // 
             // lblHeroRemove
             // 
@@ -199,14 +204,14 @@
             // 
             // txtRemoveHero
             // 
-            this.txtRemoveHero.Location = new System.Drawing.Point(419, 348);
+            this.txtRemoveHero.Location = new System.Drawing.Point(425, 349);
             this.txtRemoveHero.Name = "txtRemoveHero";
             this.txtRemoveHero.Size = new System.Drawing.Size(100, 20);
             this.txtRemoveHero.TabIndex = 15;
             // 
             // btnRemoveHero
             // 
-            this.btnRemoveHero.Location = new System.Drawing.Point(537, 344);
+            this.btnRemoveHero.Location = new System.Drawing.Point(537, 347);
             this.btnRemoveHero.Name = "btnRemoveHero";
             this.btnRemoveHero.Size = new System.Drawing.Size(75, 23);
             this.btnRemoveHero.TabIndex = 16;
@@ -224,11 +229,45 @@
             this.lblStatus.TabIndex = 17;
             this.lblStatus.Text = "Status:";
             // 
+            // btnDec
+            // 
+            this.btnDec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDec.Location = new System.Drawing.Point(188, 72);
+            this.btnDec.Name = "btnDec";
+            this.btnDec.Size = new System.Drawing.Size(92, 43);
+            this.btnDec.TabIndex = 18;
+            this.btnDec.Text = "Descending Sort";
+            this.btnDec.UseVisualStyleBackColor = true;
+            this.btnDec.Click += new System.EventHandler(this.btnDec_Click);
+            // 
+            // heroesToUpper
+            // 
+            this.heroesToUpper.Location = new System.Drawing.Point(523, 82);
+            this.heroesToUpper.Name = "heroesToUpper";
+            this.heroesToUpper.Size = new System.Drawing.Size(92, 23);
+            this.heroesToUpper.TabIndex = 19;
+            this.heroesToUpper.Text = "Uppercase";
+            this.heroesToUpper.UseVisualStyleBackColor = true;
+            this.heroesToUpper.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // heroesToLower
+            // 
+            this.heroesToLower.Location = new System.Drawing.Point(425, 82);
+            this.heroesToLower.Name = "heroesToLower";
+            this.heroesToLower.Size = new System.Drawing.Size(92, 23);
+            this.heroesToLower.TabIndex = 20;
+            this.heroesToLower.Text = "Lowercase";
+            this.heroesToLower.UseVisualStyleBackColor = true;
+            this.heroesToLower.Click += new System.EventHandler(this.heroesToLower_Click);
+            // 
             // Lists
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.heroesToLower);
+            this.Controls.Add(this.heroesToUpper);
+            this.Controls.Add(this.btnDec);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnRemoveHero);
             this.Controls.Add(this.txtRemoveHero);
@@ -275,6 +314,9 @@
         private System.Windows.Forms.TextBox txtRemoveHero;
         private System.Windows.Forms.Button btnRemoveHero;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Button btnDec;
+        private System.Windows.Forms.Button heroesToUpper;
+        private System.Windows.Forms.Button heroesToLower;
     }
 }
 
